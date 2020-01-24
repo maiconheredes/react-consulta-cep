@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav, Navbar, NavItem } from 'react-bootstrap';
+import { Nav, Navbar } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 class MainMenu extends React.Component {
@@ -13,7 +13,7 @@ class MainMenu extends React.Component {
                         <LinkContainer to="/">
                             <Nav.Link>Home</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/consultar">
+                        <LinkContainer to="/consult">
                             <Nav.Link>Consultar</Nav.Link>
                         </LinkContainer>
                     </Nav>

@@ -1,9 +1,10 @@
 import React from 'react';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
+import FindCEP from '../components/FindCEP.jsx';
 import { Container, Jumbotron } from 'react-bootstrap';
 
-class Home extends React.Component {
+class Consult extends React.Component {
     render() {
         return (
             <>
@@ -13,8 +14,7 @@ class Home extends React.Component {
                 <main>
                     <Container>
                         <Jumbotron className="mt-32">
-                            <h1>Consulta CEP!</h1>
-                            <p>Aplicativo ReactJS de teste para estudo.</p>
+                            <FindCEP />
                         </Jumbotron>
                     </Container>
                 </main>
@@ -26,4 +26,4 @@ class Home extends React.Component {
     }
 }
 
-export default Home;
+export default Consult;
