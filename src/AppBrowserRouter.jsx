@@ -1,8 +1,9 @@
 import React from 'react';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import Home from './templates/Home.jsx'
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 class AppBrowserRouter extends React.Component {
-    render () {
+    render() {
         return (
             <BrowserRouter>
                 <Switch>
