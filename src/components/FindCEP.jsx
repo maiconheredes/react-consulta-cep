@@ -17,17 +17,32 @@ class FindCEP extends React.Component {
     }
 
     consultCEP(event) {
-        fetch('https://viacep.com.br/ws/' + this.state.cep + '/json/')
+        event.preventDefault();
+
+        const { cep, objectCep } = this.state;
+
+        if (objectCep.hasOwnProperty('cep')) {
+            if (this.formatCep(cep) === this.formatCep(objectCep.cep)) {
+                return;
+            }
+        }
+
+        if (cep === 0 || cep === "") {
+            this.setState({ objectCep: {} })
+
+            return;
+        }
+
+        fetch('https://viacep.com.br/ws/' + cep + '/json/')
             .then(res => res.json())
             .then(
                 (result) => {
                     this.setState({ objectCep: result })
                 },
                 (error) => {
-
+                    this.setState({ objectCep: {} })
                 }
             );
-        event.preventDefault();
     }
 
     setCEP(event) {
@@ -39,10 +54,20 @@ class FindCEP extends React.Component {
     }
 
     render() {
-        let objectCep;
+        const { objectCep } = this.state;
 
-        if (this.state.objectCep.length > 0) {
-            objectCep = <Badge variant="primary">New</Badge>;
+        let testObject;
+
+        if (Object.keys(objectCep).length && !objectCep.hasOwnProperty('erro')) {
+            testObject = <div>
+                <p>CEP: {objectCep.cep}</p>
+                <p>RUA: {objectCep.logradouro}</p>
+                <p>BAIRRO: {objectCep.bairro}</p>
+                <p>CIDADE: {objectCep.localidade}</p>
+                <p>ESTADO: {objectCep.uf}</p>
+            </div>;
+        } else if (objectCep.hasOwnProperty('erro')) {
+            testObject = <div>CEP não existe!</div>;
         }
 
         return (
@@ -53,8 +78,9 @@ class FindCEP extends React.Component {
                         <FormControl type="text" id="cep" name="cep" placeholder="Informe o CEP" mask="11.111-111" onChange={this.setCEP} />
                     </Form.Group>
                     <Button variant="primary" type="submit">Consular</Button>
-                    {objectCep}
                 </Form>
+                <br />
+                {testObject}
             </>
         );
     };
