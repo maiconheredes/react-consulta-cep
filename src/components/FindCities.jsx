@@ -12,6 +12,7 @@ class FindCities extends React.Component {
         };
 
         this.setSelectedState = this.setSelectedState.bind(this);
+        this.clearCities = this.clearCities.bind(this);
         this.findCities = this.findCities.bind(this);
     }
 
@@ -49,6 +50,10 @@ class FindCities extends React.Component {
             );
     }
 
+    clearCities(event) {
+        this.setState({ cities: [] });
+    }
+
     render() {
         const { states, cities } = this.state;
 
@@ -57,7 +62,7 @@ class FindCities extends React.Component {
         if (Object.keys(cities).length) {
             viewCities = <div>
                 {cities.map(city => (
-                    <p key={city.id}>Nome: {city.nome}</p>
+                    <p key={city.id}><strong>Nome:</strong> {city.nome}</p>
                 ))}
             </div>;
         }
@@ -73,7 +78,8 @@ class FindCities extends React.Component {
                                 <option key={state.id} value={state.id}>{state.nome}</option>
                             ))}
                         </Form.Control>
-                        <Button variant="primary" type="submit" className="mt-15">Buscar cidades</Button>
+                        <Button variant="primary" type="submit" className="mt-15 mr-15">Buscar cidades</Button>
+                        <Button variant="danger" type="button" className="mt-15" onClick={this.clearCities}>Limpar cidades</Button>
                     </Form.Group>
                 </Form>
                 {viewCities}
