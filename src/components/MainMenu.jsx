@@ -16,6 +16,9 @@ class MainMenu extends React.Component {
                         <LinkContainer to="/consult">
                             <Nav.Link>Consultar</Nav.Link>
                         </LinkContainer>
+                        <LinkContainer to="/city">
+                            <Nav.Link>Cidade</Nav.Link>
+                        </LinkContainer>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

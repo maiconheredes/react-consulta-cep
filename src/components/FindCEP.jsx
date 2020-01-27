@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Button, Badge } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import FormControl from 'react-bootstrap-maskedinput';
 
 class FindCEP extends React.Component {
